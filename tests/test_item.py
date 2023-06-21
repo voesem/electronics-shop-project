@@ -1,4 +1,5 @@
 from src.item import Item
+from src.phone import Phone
 
 item_1 = Item('Смарт-часы', 25000, 20)
 item_2 = Item('Робот-пылесос', 12000, 5)
@@ -40,3 +41,9 @@ def test_repr():
 
 def test_str():
     assert str(item_1) == 'Смартфон'
+
+
+def test_add_quantity():
+    phone_1 = Phone('Samsung', 12500.0, 20, 2)
+
+    assert item_1 + phone_1 == 40
