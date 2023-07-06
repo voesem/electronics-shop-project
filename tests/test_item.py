@@ -1,4 +1,6 @@
-from src.item import Item
+import pytest
+
+from src.item import Item, InstantiateCSVError
 from src.phone import Phone
 
 item_1 = Item('Смарт-часы', 25000, 20)
@@ -47,3 +49,13 @@ def test_add_quantity():
     phone_1 = Phone('Samsung', 12500.0, 20, 2)
 
     assert item_1 + phone_1 == 40
+
+
+def test_instantiate_from_csv_file_not_found():
+    with pytest.raises(FileNotFoundError):
+        Item.instantiate_from_csv()
+
+
+def test_instantiate_from_csv_damaged_file():
+    with pytest.raises(InstantiateCSVError):
+        Item.instantiate_from_csv()
